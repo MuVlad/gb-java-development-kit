@@ -67,7 +67,7 @@ public class GenericArray<T> {
 
         @Override
         public Iterator<Object> iterator() {
-            return this;
+            return new GenericIterator();
         }
     }
 }
