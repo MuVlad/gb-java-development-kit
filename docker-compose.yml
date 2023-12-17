@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  hw-backend:
+    image: ${DOCKER_REGISTRY-}hw4
+    container_name: gb-hw-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+  hw-db:
+    image: postgres:15.1-alpine
+    container_name: gb-hw-db
+    environment:
+      - POSTGRES_DB=gb-jdk-hw
+      - POSTGRES_PASSWORD=mus
+      - POSTGRES_USER=mus
+    volumes:
+      - ./.containers/database:/var/lib/postgresql
+    ports:
+      - 6666:5432
